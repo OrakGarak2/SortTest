@@ -57,37 +57,37 @@ void PlayBubbleSort(vector<string>* vec, bool isAscendingOrder)
 {
 	BubbleSort sort(isAscendingOrder, vec->begin(), vec->end());
 
-	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	chrono::system_clock::time_point start = chrono::system_clock::now();
 
 	sort.PlaySort();
 
-	std::chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+	chrono::duration<double>sec = chrono::system_clock::now() - start;
 
-	cout << "\n\n" << sec.count() << "초만큼 걸렸습니다." << endl;
+	cout << sec.count() << "초만큼 걸렸습니다." << endl;
 }
 
 void PlayQuickSort(vector<string>* vec, bool isAscendingOrder)
 {
 	QuickSort sort(isAscendingOrder, vec->begin(), vec->end());
 
-	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	chrono::system_clock::time_point start = chrono::system_clock::now();
 
 	sort.PlaySort();
 
-	std::chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+	chrono::duration<double>sec = chrono::system_clock::now() - start;
 
-	cout << "\n\n" << sec.count() << "초만큼 걸렸습니다." << endl;
+	cout << sec.count() << "초만큼 걸렸습니다." << endl;
 }
 
 void PlayHeapSort(vector<string>* vec, bool isAscendingOrder)
 {
 	HeapSort sort(isAscendingOrder, vec->begin(), vec->end());
 
-	chrono::system_clock::time_point start = std::chrono::system_clock::now();
+	chrono::system_clock::time_point start = chrono::system_clock::now();
 
 	sort.PlaySort();
 
-	chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+	chrono::duration<double>sec = chrono::system_clock::now() - start;
 
 	cout << sec.count() << "초만큼 걸렸습니다." << endl;
 }
