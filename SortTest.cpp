@@ -15,6 +15,7 @@ int main()
 	
 	vector<string> wordData = {
 		"고양이",
+		"가방",
 		"나무",
 		"바다",
 		"사과",
@@ -22,7 +23,6 @@ int main()
 		"아침",
 		"자전거",
 		"하늘",
-		"가방",
 		"차표",
 	};
 
@@ -57,19 +57,37 @@ void PlayBubbleSort(vector<string>* vec, bool isAscendingOrder)
 {
 	BubbleSort sort(isAscendingOrder, vec->begin(), vec->end());
 
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+
 	sort.PlaySort();
+
+	std::chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+
+	cout << "\n\n" << sec.count() << "초만큼 걸렸습니다." << endl;
 }
 
 void PlayQuickSort(vector<string>* vec, bool isAscendingOrder)
 {
 	QuickSort sort(isAscendingOrder, vec->begin(), vec->end());
 
+	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+
 	sort.PlaySort();
+
+	std::chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+
+	cout << "\n\n" << sec.count() << "초만큼 걸렸습니다." << endl;
 }
 
 void PlayHeapSort(vector<string>* vec, bool isAscendingOrder)
 {
 	HeapSort sort(isAscendingOrder, vec->begin(), vec->end());
 
+	chrono::system_clock::time_point start = std::chrono::system_clock::now();
+
 	sort.PlaySort();
+
+	chrono::duration<double>sec = std::chrono::system_clock::now() - start;
+
+	cout << sec.count() << "초만큼 걸렸습니다." << endl;
 }

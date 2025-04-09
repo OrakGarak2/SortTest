@@ -80,10 +80,11 @@ void BubbleSort::PlaySort()
 {
 	Sort::PlaySort();
 
-	int i = 0;
+	
 
-	for (i = 0; end - i != begin; i++)
+	for (int i = 0; end - i != begin; i++)
 	{
+		bool isSwapped = false; // Swap 호출 여부
 		for (int ii = 0; begin + ii != end - i - 1; ii++)
 		{
 			MarkVisited('>', 0, ii);
@@ -92,15 +93,19 @@ void BubbleSort::PlaySort()
 			if (ShouldSwapValue(begin[ii], begin[ii + 1]))
 			{
 				Swap(ii, ii + 1, ii, ii + 1);
+				isSwapped = true;
 			}
 
 			Sleep(waitTime);
 			EraseMark(0, ii);
 			EraseMark(0, ii + 1);
 		}
+
+		// 한 번도 Swap이 이루어지지 않았다면 정렬이 이미 완료되었다는 뜻이므로 반복문을 끝냄.
+		if (!isSwapped) break;
 	}
 
-	SetCursorPosition(0, i);
+	SetCursorPosition(0, static_cast<int>(end - begin));
 
 	cout << "버블 정렬을 완료했습니다." << endl;
 }
