@@ -28,30 +28,33 @@ int main()
 		"차표",
 	};
 
+	unique_ptr<Sort> sort;
+
 	switch (static_cast<SortType>(sortIndex))
 	{
 	case SortType::Bubble:
 	{
-		BubbleSort sort(isAscendingOrder, wordData.begin(), wordData.end());
-		PlaySort(&sort);
+		sort = make_unique<BubbleSort>(isAscendingOrder, wordData.begin(), wordData.end());
 		break;
 	}
 	case SortType::Quick:
 	{
-		QuickSort sort(isAscendingOrder, wordData.begin(), wordData.end());
-		PlaySort(&sort);
+		sort = make_unique<QuickSort>(isAscendingOrder, wordData.begin(), wordData.end());
 		break;
 	}
 	case SortType::Heap:
 	{
-		HeapSort sort(isAscendingOrder, wordData.begin(), wordData.end());
-		PlaySort(&sort);
+		sort = make_unique<HeapSort>(isAscendingOrder, wordData.begin(), wordData.end());
 		break;
 	}
 	default:
+	{
 		cout << "\n치명적 에러";
 		return -1;
+	}	
 	}
+
+	PlaySort(*sort);
 
 	return 0;
 }
@@ -76,11 +79,11 @@ void ViewCursur(BOOL isShowingCursur)
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursur);
 }
 
-void PlaySort(Sort* sort)
+void PlaySort(Sort& sort)
 {
 	chrono::system_clock::time_point start = chrono::system_clock::now();
 
-	sort->PlaySort();
+	sort.PlaySort();
 
 	chrono::duration<double>sec = chrono::system_clock::now() - start;
 

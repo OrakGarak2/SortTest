@@ -5,4 +5,4 @@ using namespace std;
 
 int InputIndex(string guide);
 void ViewCursur(BOOL isShowingCursur);
-void PlaySort(Sort* sort);
+void PlaySort(Sort& sort);
