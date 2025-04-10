@@ -31,18 +31,29 @@ int main()
 	switch (static_cast<SortType>(sortIndex))
 	{
 	case SortType::Bubble:
-		PlayBubbleSort(&wordData, isAscendingOrder);
+	{
+		BubbleSort sort(isAscendingOrder, wordData.begin(), wordData.end());
+		PlaySort(&sort);
 		break;
+	}
 	case SortType::Quick:
-		PlayQuickSort(&wordData, isAscendingOrder);
+	{
+		QuickSort sort(isAscendingOrder, wordData.begin(), wordData.end());
+		PlaySort(&sort);
 		break;
+	}
 	case SortType::Heap:
-		PlayHeapSort(&wordData, isAscendingOrder);
+	{
+		HeapSort sort(isAscendingOrder, wordData.begin(), wordData.end());
+		PlaySort(&sort);
 		break;
+	}
 	default:
 		cout << "\n치명적 에러";
 		return -1;
 	}
+
+	return 0;
 }
 
 int InputIndex(string guide)
@@ -65,39 +76,11 @@ void ViewCursur(BOOL isShowingCursur)
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursur);
 }
 
-void PlayBubbleSort(vector<string>* vec, bool isAscendingOrder)
+void PlaySort(Sort* sort)
 {
-	BubbleSort sort(isAscendingOrder, vec->begin(), vec->end());
-
 	chrono::system_clock::time_point start = chrono::system_clock::now();
 
-	sort.PlaySort();
-
-	chrono::duration<double>sec = chrono::system_clock::now() - start;
-
-	cout << sec.count() << "초만큼 걸렸습니다." << endl;
-}
-
-void PlayQuickSort(vector<string>* vec, bool isAscendingOrder)
-{
-	QuickSort sort(isAscendingOrder, vec->begin(), vec->end());
-
-	chrono::system_clock::time_point start = chrono::system_clock::now();
-
-	sort.PlaySort();
-
-	chrono::duration<double>sec = chrono::system_clock::now() - start;
-
-	cout << sec.count() << "초만큼 걸렸습니다." << endl;
-}
-
-void PlayHeapSort(vector<string>* vec, bool isAscendingOrder)
-{
-	HeapSort sort(isAscendingOrder, vec->begin(), vec->end());
-
-	chrono::system_clock::time_point start = chrono::system_clock::now();
-
-	sort.PlaySort();
+	sort->PlaySort();
 
 	chrono::duration<double>sec = chrono::system_clock::now() - start;
 

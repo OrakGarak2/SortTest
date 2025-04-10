@@ -91,7 +91,7 @@ public:
 	void PlaySort() override;
 };
 
-class QuickSort : Sort
+class QuickSort : public Sort
 {
 public:
 	QuickSort(bool isAscendingOrder, vector<string>::iterator begin, vector<string>::iterator end) 
@@ -103,7 +103,7 @@ public:
 	void PlaySort() override;
 };
 
-class HeapSort : Sort
+class HeapSort : public Sort
 {
 public:
 	HeapSort(bool isAscendingOrder, vector<string>::iterator begin, vector<string>::iterator end)
