@@ -12,6 +12,8 @@ int main()
 	bool isAscendingOrder = InputIndex("내림차순 정렬을 원하시면 0, 오름차순 정렬을 원하시면 1을 입력해주세요. -> ");
 
 	system("cls");
+
+	ViewCursur(FALSE);
 	
 	vector<string> wordData = {
 		"고양이",
@@ -51,6 +53,16 @@ int InputIndex(string guide)
 	cout << "\n";
 
 	return index;
+}
+
+void ViewCursur(BOOL isShowingCursur)
+{
+	// CONSOLE_CURSOR_INFO라는 구조체를 초기화
+	// 첫 번째 변수인 dwSize는 커서의 굵기를 의미하며, 그냥 1로 초기화
+	// 두 번째 변수인 bVisible은 커서의 노출 여부를 나타내며 isShowingCursur으로 초기화
+	CONSOLE_CURSOR_INFO cursur = { 1, isShowingCursur };
+
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursur);
 }
 
 void PlayBubbleSort(vector<string>* vec, bool isAscendingOrder)

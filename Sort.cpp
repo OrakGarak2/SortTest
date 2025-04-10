@@ -80,8 +80,6 @@ void BubbleSort::PlaySort()
 {
 	Sort::PlaySort();
 
-	
-
 	for (int i = 0; end - i != begin; i++)
 	{
 		bool isSwapped = false; // Swap 호출 여부
@@ -113,6 +111,8 @@ void BubbleSort::PlaySort()
 void QuickSort::PlaySort()
 {
 	Sort::PlaySort();
+
+
 }
 
 void HeapSort::PlaySort()
