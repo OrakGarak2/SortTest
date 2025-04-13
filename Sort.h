@@ -28,7 +28,7 @@ protected:
 	vector<string>::iterator begin;
 	vector<string>::iterator end;
 
-	int waitTime = 500;
+	int waitTime = 1000;
 
 public:
 	Sort(bool isAscendingOrder, vector<string>::iterator begin, vector<string>::iterator end)
@@ -76,7 +76,7 @@ public:
 
 	void Swap(const int y1, const int y2, const int p1, const int p2);
 
-	bool ShouldSwapValue(const string frontStr, const string backStr);
+	bool CompareValue(const string str1, const string str2);
 };
 
 class BubbleSort : public Sort
@@ -101,6 +101,10 @@ public:
 	}
 
 	void PlaySort() override;
+
+	void RecursiveQuickSort(const int low, const int high);
+	
+	int Partition(const int left, const int right);
 };
 
 class HeapSort : public Sort

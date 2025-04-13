@@ -16,16 +16,13 @@ int main()
 	ViewCursur(FALSE);
 	
 	vector<string> wordData = {
-		"고양이",
-		"가방",
-		"나무",
-		"바다",
-		"사과",
-		"다리",
-		"아침",
-		"자전거",
-		"하늘",
-		"차표",
+		"5",
+		"3",
+		"7",
+		"1",
+		"2",
+		"6",
+		"4",
 	};
 
 	unique_ptr<Sort> sort;
