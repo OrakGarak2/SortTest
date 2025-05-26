@@ -1,5 +1,6 @@
 #include "Sort.h"
 
+#pragma region Sort
 void Sort::SetCursorPosition(const int x, const int y)
 {
 	COORD pos = { static_cast<SHORT>(x), static_cast<SHORT>(y) };	// static_cast로 int를 SHORT로 변경해서 사용, 
@@ -58,6 +59,8 @@ void Sort::Swap(const int y1, const int y2, const int p1, const int p2)
 
 	PrintData(markCount, y1, p1);
 	PrintData(markCount, y2, p2);
+	
+	Sleep(waitTime);
 }
 
 // 오름차순 정렬일 때
@@ -68,14 +71,15 @@ bool Sort::CompareValue(const string str1, const string str2)
 {
 	return isAscendingOrder ? str1.compare(str2) > 0 : str1.compare(str2) < 0;
 }
+#pragma endregion
 
+#pragma region Bubble Sort
 void BubbleSort::PlaySort()
 {
 	Sort::PlaySort();
 
 	for (int i = 0; end - i != begin; i++)
 	{
-		bool isSwapped = false; // Swap 호출 여부
 		for (int ii = 0; begin + ii != end - i - 1; ii++)
 		{
 			MarkVisited('>', 0, ii);
@@ -84,23 +88,21 @@ void BubbleSort::PlaySort()
 			if (CompareValue(begin[ii], begin[ii + 1]))
 			{
 				Swap(ii, ii + 1, ii, ii + 1);
-				isSwapped = true;
 			}
 
 			Sleep(waitTime);
 			EraseMark(0, ii);
 			EraseMark(0, ii + 1);
 		}
-
-		// 한 번도 Swap이 이루어지지 않았다면 정렬이 이미 완료되었다는 뜻이므로 반복문을 끝냄.
-		if (!isSwapped) break;
 	}
 
 	SetCursorPosition(0, static_cast<int>(end - begin));
 
 	cout << "버블 정렬을 완료했습니다." << endl;
 }
+#pragma endregion
 
+#pragma region Quick Sort
 void QuickSort::PlaySort()
 {
 	Sort::PlaySort();
@@ -172,8 +174,4 @@ int QuickSort::Partition(const int left, const int right)
 
 	return low; // low와 high가 교차하는 지점을 반환(low와 같음.)
 }
-
-void HeapSort::PlaySort()
-{
-	Sort::PlaySort();
-}
+#pragma endregion

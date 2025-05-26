@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <chrono>
 #include <windows.h>
 
 using namespace std;
@@ -10,7 +9,6 @@ using namespace std;
 enum class SortType {
 	Bubble,
 	Quick,
-	Heap,
 	/// <summary>
 	/// 몇 개의 enum이 있는지 새는 용도
 	/// </summary>
@@ -28,7 +26,7 @@ protected:
 	vector<string>::iterator begin;
 	vector<string>::iterator end;
 
-	int waitTime = 1000;
+	int waitTime = 500;
 
 public:
 	Sort(bool isAscendingOrder, vector<string>::iterator begin, vector<string>::iterator end)
@@ -105,16 +103,4 @@ public:
 	void RecursiveQuickSort(const int low, const int high);
 	
 	int Partition(const int left, const int right);
-};
-
-class HeapSort : public Sort
-{
-public:
-	HeapSort(bool isAscendingOrder, vector<string>::iterator begin, vector<string>::iterator end)
-		: Sort(isAscendingOrder, begin, end) 
-	{
-		markCount = 2;
-	}
-
-	void PlaySort() override;
 };

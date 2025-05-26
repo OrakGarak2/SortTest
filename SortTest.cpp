@@ -5,7 +5,7 @@ int main()
 	int sortIndex = 0;
 
 	do {
-		sortIndex = InputIndex("버블 정렬을 테스트하시려면 0, 퀵 정렬을 테스트하시려면 1, 힙 정렬을 테스트하시려면 2을 입력해주세요. -> ");
+		sortIndex = InputIndex("버블 정렬을 테스트하시려면 0, 퀵 정렬을 테스트하시려면 1을 입력해주세요. -> ");
 	} while (sortIndex < 0 || sortIndex >= static_cast<int>(SortType::TypeCount));
 
 	// AscendingOrder: 오름차순 정렬
@@ -16,13 +16,13 @@ int main()
 	ViewCursur(FALSE);
 	
 	vector<string> wordData = {
-		"5",
-		"3",
-		"7",
-		"1",
+		"9",
 		"2",
-		"6",
-		"4",
+		"3",
+		"1",
+		"5",
+		"7",
+		"8",
 	};
 
 	unique_ptr<Sort> sort;
@@ -37,11 +37,6 @@ int main()
 	case SortType::Quick:
 	{
 		sort = make_unique<QuickSort>(isAscendingOrder, wordData.begin(), wordData.end());
-		break;
-	}
-	case SortType::Heap:
-	{
-		sort = make_unique<HeapSort>(isAscendingOrder, wordData.begin(), wordData.end());
 		break;
 	}
 	default:
@@ -78,11 +73,7 @@ void ViewCursur(BOOL isShowingCursur)
 
 void PlaySort(Sort& sort)
 {
-	chrono::system_clock::time_point start = chrono::system_clock::now();
-
 	sort.PlaySort();
 
-	chrono::duration<double>sec = chrono::system_clock::now() - start;
-
-	cout << sec.count() << "초만큼 걸렸습니다." << endl;
+	cout << "정렬이 완료되었습니다." << endl;
 }
