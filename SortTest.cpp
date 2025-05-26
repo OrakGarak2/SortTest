@@ -74,6 +74,4 @@ void ViewCursur(BOOL isShowingCursur)
 void PlaySort(Sort& sort)
 {
 	sort.PlaySort();
-
-	cout << "정렬이 완료되었습니다." << endl;
 }
