@@ -14,15 +14,15 @@ int main()
 	system("cls");
 
 	ViewCursur(FALSE);
-	
+
 	vector<string> wordData = {
-		"9",
-		"2",
-		"3",
-		"1",
-		"5",
-		"7",
-		"8",
+		"마법",
+		"바지",
+		"라면",
+		"가방",
+		"다리",
+		"사람",
+		"나비"
 	};
 
 	unique_ptr<Sort> sort;
@@ -43,7 +43,7 @@ int main()
 	{
 		cout << "\n치명적 에러";
 		return -1;
-	}	
+	}
 	}
 
 	PlaySort(*sort);

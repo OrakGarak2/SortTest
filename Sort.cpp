@@ -172,6 +172,8 @@ int QuickSort::Partition(const int left, const int right)
 	EraseMark(1, low);
 	EraseMark(2, high);
 
+	Sleep(waitTime);
+
 	return low; // low와 high가 교차하는 지점을 반환(low와 같음.)
 }
 #pragma endregion
